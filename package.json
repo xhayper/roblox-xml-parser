@@ -1,5 +1,5 @@
 {
-  "name": "roblox-xml2-parser",
+  "name": "roblox-xml-parser",
   "version": "1.0.0",
   "description": "Roblox rbxlx/rbxmx parser written in TypeScript.",
   "main": "dist/index.js",
