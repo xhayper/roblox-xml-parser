@@ -6,7 +6,7 @@ export interface Properties {
     [name: string]: Property;
 }
 export interface PropertyXML {
-    "$": {
+    $: {
         name: string;
     };
     _?: string;
@@ -15,12 +15,10 @@ export interface PropertiesXML {
     [name: string]: PropertyXML[];
 }
 export interface InstanceXML {
-    "$": {
+    $: {
         class: string;
         referent: string;
     };
-    Properties: [
-        PropertiesXML
-    ];
+    Properties: [PropertiesXML];
     Item: InstanceXML[];
 }

@@ -10,8 +10,8 @@ function convertProperties(properties) {
             // create category if list doesn't exists
             grouped[type] = [];
         }
-        let property = { "$": { name: name } };
-        if (typeof value == "object") {
+        let property = { $: { name: name } };
+        if (typeof value === 'object') {
             property = Object.assign({}, property, value); // merge
             grouped[type].push(property);
         }
@@ -30,12 +30,12 @@ function parseProperties(properties) {
         const props = properties[type];
         for (let i in props) {
             const property = props[i];
-            const name = property["$"].name;
+            const name = property['$'].name;
             let value = property._;
             if (!value && Object.keys(property).length > 1) {
                 value = {};
                 let values = property;
-                delete values["$"];
+                delete values['$'];
                 for (let key in values) {
                     const val = values[key][0];
                     if (val) {
@@ -52,7 +52,7 @@ exports.parseProperties = parseProperties;
 // parse and convert instance back to xml functions:
 /* Used to parse properties into an easier structure */
 function parseInstance(instance) {
-    const { class: className, referent } = instance["$"];
+    const { class: className, referent } = instance['$'];
     const result = new classes_1.Instance(className);
     result.properties = parseProperties(instance.Properties[0]);
     result.referent = referent;
@@ -65,8 +65,12 @@ function parseInstance(instance) {
 }
 exports.parseInstance = parseInstance;
 function convertInstance(instance) {
-    let converted = { ["$"]: { "class": instance.class, "referent": instance.referent }, Properties: [convertProperties(instance.properties)], Item: [] };
-    instance.children.forEach(element => {
+    let converted = {
+        ['$']: { class: instance.class, referent: instance.referent },
+        Properties: [convertProperties(instance.properties)],
+        Item: []
+    };
+    instance.children.forEach((element) => {
         converted.Item.push(convertInstance(element));
     });
     return converted;

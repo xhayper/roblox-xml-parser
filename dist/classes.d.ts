@@ -1,4 +1,4 @@
-import { Property } from "./interfaces";
+import { Property } from './interfaces';
 export declare class Instance {
     referent: string;
     class: string;
