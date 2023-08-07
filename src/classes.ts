@@ -37,9 +37,9 @@ export class Instance {
     return descendants;
   }
 
-  constructor(className: string, parent?: Instance) {
+  constructor(className?: string, parent?: Instance) {
     this.referent = 'RBX' + crypto.randomBytes(16).toString('hex').toUpperCase();
-    this.class = className || 'Part';
+    this.class = className ?? 'Part';
     this.properties = { Name: { value: className, type: 'string' } };
     if (parent) {
       this.setParent(parent);

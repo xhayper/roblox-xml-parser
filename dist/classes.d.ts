@@ -10,5 +10,5 @@ export declare class Instance {
     setParent(newParent: Instance): void;
     Clone(): Instance;
     getDescendants(): Instance[];
-    constructor(className: string, parent?: Instance);
+    constructor(className?: string, parent?: Instance);
 }

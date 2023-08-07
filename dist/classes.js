@@ -35,7 +35,7 @@ class Instance {
     constructor(className, parent) {
         this.children = [];
         this.referent = 'RBX' + node_crypto_1.default.randomBytes(16).toString('hex').toUpperCase();
-        this.class = className || 'Part';
+        this.class = className ?? 'Part';
         this.properties = { Name: { value: className, type: 'string' } };
         if (parent) {
             this.setParent(parent);
