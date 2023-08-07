@@ -1,7 +1,7 @@
-import { parseInstance, convertInstance } from "./parser";
-import { parseStringPromise, Builder } from "xml2js";
-import { Properties, Property } from "./interfaces";
-import { Instance } from "./classes";
+import { parseInstance, convertInstance } from './parser';
+import { parseStringPromise, Builder } from 'xml2js';
+import { Properties, Property } from './interfaces';
+import { Instance } from './classes';
 
 export { Instance, Property, Properties };
 
@@ -17,18 +17,18 @@ export class RobloxXMLParser {
 
   convertToXML(): string {
     const builder = new Builder();
-    let base: any = { roblox: { ["$"]: { version: "4" }, Item: [] } };
+    let base: any = { roblox: { ['$']: { version: '4' }, Item: [] } };
     this.dataModel.children.forEach((element) => {
       base.roblox.Item.push(convertInstance(element));
     });
     return builder
       .buildObject(base)
-      .replaceAll("&#xD;", "")
-      .replace('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n', "");
+      .replaceAll('&#xD;', '')
+      .replace('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n', '');
   }
 
   constructor() {
-    this.dataModel = new Instance("DataModel");
+    this.dataModel = new Instance('DataModel');
     this.dataModel.properties = {};
   }
 }

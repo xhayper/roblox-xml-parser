@@ -1,5 +1,5 @@
-import { Property } from "./interfaces";
-import crypto = require("node:crypto");
+import { Property } from './interfaces';
+import crypto from 'node:crypto';
 
 export class Instance {
   referent: string;
@@ -11,9 +11,7 @@ export class Instance {
   setParent(newParent: Instance) {
     const oldparent = this.parent;
     if (oldparent) {
-      oldparent.children = oldparent.children.filter(
-        (x) => x.referent != this.referent
-      );
+      oldparent.children = oldparent.children.filter((x) => x.referent != this.referent);
     }
     this.parent = newParent;
     newParent.children.push(this);
@@ -40,10 +38,9 @@ export class Instance {
   }
 
   constructor(className: string, parent?: Instance) {
-    this.referent =
-      "RBX" + crypto.randomBytes(16).toString("hex").toUpperCase();
-    this.class = className || "Part";
-    this.properties = { Name: { value: className, type: "string" } };
+    this.referent = 'RBX' + crypto.randomBytes(16).toString('hex').toUpperCase();
+    this.class = className || 'Part';
+    this.properties = { Name: { value: className, type: 'string' } };
     if (parent) {
       this.setParent(parent);
     }
